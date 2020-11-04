@@ -1,5 +1,8 @@
 module.exports = {
-    mongodb: {
-        connectionURI: 'insert_mongodb_connection_uri_here'
-    }
+  mongodb: {
+    connectionURI: 'insert_mongodb_connection_uri_here'
+  },
+  security: {
+    salt: ''
+  }
 }
