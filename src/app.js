@@ -5,9 +5,7 @@ const cors = require('cors')
 
 // Init logger.
 const logger = require('./utils/Logger');
-  // Init database controller.
-const controller = new DataController('postalCodes.json');
-//controller.importPostalCodesFromFile('US.txt');
+// Init database controller.
 logger.info('App started successfully.');
 
 const app = express();
