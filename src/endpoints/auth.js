@@ -35,7 +35,7 @@ export default (app) => {
       if (error) {
         return res.status(400).json({ error });
       }
-      const passwordBuffer = await crypto.scrypt(body.password, config.security.salt, 32).toString('hex');
+      const passwordBuffer = await crypto.scrypt(body.password, config.security.salt, 32);
       const password = passwordBuffer.toString('hex');
       const authToken = generateToken();
       const user = await User.create({ ...req.body, password, authTokens: [authToken] });
@@ -50,7 +50,9 @@ export default (app) => {
       if (!(req.body.email && req.body.password && EmailValidator.validate(req.body.email) && req.body.password.lenght <= 64)) {
         return req.status(400).json({ error: 'Missing valid email or password.' });
       }
-      const user = await User.findOne({ email: req.body.email.toString(), password: req.body.password.toString() });
+      const passwordBuffer = await crypto.scrypt(body.password.toString(), config.security.salt, 32);
+      const password = passwordBuffer.toString('hex');
+      const user = await User.findOne({ email: req.body.email.toString(), password });
       const authToken = generateToken();
       user.authTokens.push(authToekn);
       await user.save();
