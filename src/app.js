@@ -15,10 +15,12 @@ app.use(bodyParser.json());
 import AuthHandler from './endpoints/auth';
 import CertificatesHandler from './endpoints/certificates';
 import UserDataHandler from './endpoints/userData';
+import TemperatureMapReceiver from './endpoints/temperatureMapReceiver';
 
 AuthHandler(app);
 CertificatesHandler(app);
 UserDataHandler(app);
+TemperatureMapReceiver(app);
 
 const port = 3000;
 

@@ -12,7 +12,7 @@ const UserSchema = new Schema(
     },
     representativeName: String,
     contactPhone: String,
-    smartDeviceToken: String,
+    smartDeviceTokens: [String],
     authTokens: [String]
   },
   {
@@ -20,7 +20,7 @@ const UserSchema = new Schema(
   },
 );
 
-UserSchema.index({ email: 1, password: 1 });
+UserSchema.index({ email: 1, password: 1, smartDeviceTokens: 1 });
 
 const User = mongoose.model('User', UserSchema);
 

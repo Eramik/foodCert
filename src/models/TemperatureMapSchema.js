@@ -4,10 +4,8 @@ import TemperatureMapPointSchema from './TemperatureMapPointSchema';
 const TemperatureMapSchema = new Schema(
   {
     isValid: Boolean,
-    points: [TemperatureMapPointSchema]
-  },
-  {
-    timestamps: true,
+    points: [TemperatureMapPointSchema],
+    creationTimestamp: String,
   },
 );
 
