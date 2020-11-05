@@ -13,8 +13,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 import AuthHandler from './endpoints/auth';
+import CertificatesHandler from './endpoints/certificates';
 
 AuthHandler(app);
+CertificatesHandler(app);
 
 const port = 3000;
 
