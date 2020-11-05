@@ -26,7 +26,7 @@ export default (app) => {
         return res.status(400).json({ error: 'Certificate is not issued.' });
       }
 
-      return res.setHeader('Content-Type', 'image/jpeg').sendFile(transportation.certificatePath);
+      return res.setHeader('Content-Type', 'application/pdf').sendFile(transportation.certificatePath);
     } catch (e) {
       logger.error(e);
       return res.status(500).json({ error: e });

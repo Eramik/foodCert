@@ -1,6 +1,8 @@
 import Transportation from '../models/Transportation';
 import logger from '../utils/Logger';
 import getAuthedSmartDeviceOwner from '../utils/getAuthedSmartDeviceOwner';
+import { getQualityScore } from '../logic/analyseTemperatureMaps';
+import { generateCertificate } from '../logic/certificateGeneration';
 
 export default (app) => {
   app.post('/temperatureMap/:transportationId', async (req, res) => {
@@ -19,6 +21,19 @@ export default (app) => {
         transportation.temperatureMap = [];
       }
       transportation.temperatureMaps.push(req.body.temperatureMap);
+
+      if (req.body.initTransport) {
+        transportation.transportationStartTime = new Date().toUTCString();
+      }
+      if (req.body.endTransport) {
+        transportation.transportationEndTime = new Date().toUTCString();
+        const score = getQualityScore(transportation);
+        if (score > 0) {
+          const path = await generateCertificate(transportation);
+          transportation.certificatePath = path;
+        }
+      }
+
       await transportation.save();
       
       return res.json({ success: true });

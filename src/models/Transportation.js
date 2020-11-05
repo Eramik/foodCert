@@ -13,6 +13,8 @@ const TransportationSchema = new Schema(
     maximalAllowedTemperature: Number,
     certificatePath: String,
     temperatureMaps: [TemperatureMapSchema],
+    score: Number,
+    evaluationAlgorithmVersion: Number,
   },
   {
     timestamps: true,

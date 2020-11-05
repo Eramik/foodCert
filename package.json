@@ -14,6 +14,7 @@
     "email-validator": "^2.0.4",
     "express": "^4.16.4",
     "mongoose": "^5.5.4",
+    "pdfjs": "^2.4.2",
     "uuid": "^8.3.1",
     "winston": "^3.2.1"
   }
