@@ -19,7 +19,7 @@ const TransportationSchema = new Schema(
   },
 );
 
-TransportationSchema.index({ providerId: 1 });
+TransportationSchema.index({ providerId: 1, transporterId: 1, clientId: 1 });
 
 const Transportation = mongoose.model('Transportation', TransportationSchema);
 

@@ -1,6 +1,4 @@
 import Transportation from '../models/Transportation';
-import config from '../../config/default';
-import { v4 as generateToken } from 'uuid';
 import logger from '../utils/Logger';
 import getAuthedUser from '../utils/getAuthedUser';
 

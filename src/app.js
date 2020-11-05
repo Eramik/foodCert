@@ -14,9 +14,11 @@ app.use(bodyParser.json());
 
 import AuthHandler from './endpoints/auth';
 import CertificatesHandler from './endpoints/certificates';
+import UserDataHandler from './endpoints/userData';
 
 AuthHandler(app);
 CertificatesHandler(app);
+UserDataHandler(app);
 
 const port = 3000;
 

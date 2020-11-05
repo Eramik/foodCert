@@ -1,5 +1,5 @@
 import { Schema  } from 'mongoose';
-import TemperatureMapPointSchema from './TemperatureMapPointSchema copy';
+import TemperatureMapPointSchema from './TemperatureMapPointSchema';
 
 const TemperatureMapSchema = new Schema(
   {
