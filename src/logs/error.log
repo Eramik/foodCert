@@ -1,0 +1,8 @@
+{"level":"error","timestamp":"2020-11-18T17:11:01.207Z"}
+{"level":"error","timestamp":"2020-11-18T17:13:36.474Z"}
+{"level":"error","timestamp":"2020-11-18T17:14:16.116Z"}
+{"level":"error","timestamp":"2020-11-18T17:15:22.966Z"}
+{"level":"error","timestamp":"2020-11-18T17:16:08.776Z"}
+{"level":"error","timestamp":"2020-11-18T17:17:35.045Z"}
+{"message":"ReferenceError: crypto is not defined","level":"error","timestamp":"2020-11-18T17:18:08.223Z"}
+{"message":"ReferenceError: body is not defined","level":"error","timestamp":"2020-11-18T17:18:50.825Z"}

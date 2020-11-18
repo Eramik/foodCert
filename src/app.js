@@ -2,26 +2,42 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
+const config = require('../config/default');
+const mongoose = require('mongoose');
 
 // Init logger.
 const logger = require('./utils/Logger');
-// Init database controller.
-logger.info('App started successfully.');
 
-const app = express();
-app.use(cors());
-app.use(bodyParser.json());
+async function runServer() {
+  try {
+    await mongoose.connect(config.mongodb.connectionURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true
+    });
+    logger.info('Databse connected.');
+  } catch (e) {
+    logger.error('Error during connecting to database:');
+    logger.error(e);
+  }
 
-const AuthHandler = require('./endpoints/auth');
-const CertificatesHandler = require('./endpoints/certificates');
-const UserDataHandler = require('./endpoints/userData');
-const TemperatureMapReceiver = require('./endpoints/temperatureMapReceiver');
+  const app = express();
+  app.use(cors());
+  app.use(bodyParser.json());
 
-AuthHandler(app);
-CertificatesHandler(app);
-UserDataHandler(app);
-TemperatureMapReceiver(app);
+  const AuthHandler = require('./endpoints/auth');
+  const CertificatesHandler = require('./endpoints/certificates');
+  const UserDataHandler = require('./endpoints/userData');
+  const TemperatureMapReceiver = require('./endpoints/temperatureMapReceiver');
 
-const port = 3333;
+  AuthHandler(app);
+  CertificatesHandler(app);
+  UserDataHandler(app);
+  TemperatureMapReceiver(app);
 
-app.listen(port, () => console.log(`Аpp listening on port ${port}!`));
+  const port = 3333;
+
+  app.listen(port, () => console.log(`Аpp listening on port ${port}!`));
+};
+runServer();

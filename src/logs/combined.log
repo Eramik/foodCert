@@ -1,2 +1,68 @@
-{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T16:38:27.136Z"}
-{"message":"App started successfully.","level":"info","timestamp":"2020-11-18T16:38:27.138Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T16:43:33.008Z"}
+{"message":"App started successfully.","level":"info","timestamp":"2020-11-18T16:43:33.010Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T16:44:24.315Z"}
+{"message":"App started successfully.","level":"info","timestamp":"2020-11-18T16:44:24.317Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T16:44:40.128Z"}
+{"message":"App started successfully.","level":"info","timestamp":"2020-11-18T16:44:40.130Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T16:46:44.275Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T16:46:44.892Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T16:47:29.916Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T16:47:30.451Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:02:33.427Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:02:34.062Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:03:48.451Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:03:49.041Z"}
+{"level":"error","timestamp":"2020-11-18T17:11:01.207Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:13:22.633Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:13:23.258Z"}
+{"level":"error","timestamp":"2020-11-18T17:13:36.474Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:14:10.637Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:14:11.183Z"}
+{"level":"error","timestamp":"2020-11-18T17:14:16.116Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:15:11.516Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:15:12.126Z"}
+{"level":"error","timestamp":"2020-11-18T17:15:22.966Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:15:54.618Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:15:55.128Z"}
+{"level":"error","timestamp":"2020-11-18T17:16:08.776Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:16:26.848Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:16:27.431Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:17:27.527Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:17:28.213Z"}
+{"level":"error","timestamp":"2020-11-18T17:17:35.045Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:18:03.036Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:18:03.566Z"}
+{"message":"ReferenceError: crypto is not defined","level":"error","timestamp":"2020-11-18T17:18:08.223Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:18:28.156Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:18:28.717Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:18:46.154Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:18:46.710Z"}
+{"message":"ReferenceError: body is not defined","level":"error","timestamp":"2020-11-18T17:18:50.825Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:19:23.079Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:19:23.567Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:19:44.678Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:19:45.255Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:22:29.145Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:22:29.777Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:25:54.990Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:25:55.659Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:26:15.025Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:26:15.529Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:26:39.996Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:26:40.500Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:26:45.413Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:26:45.937Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:29:25.466Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:29:26.315Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:29:35.172Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:29:35.682Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:29:53.777Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:29:54.275Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:35:51.507Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:35:52.114Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:37:52.812Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:37:53.833Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:38:13.737Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:38:14.230Z"}
+{"message":"Logger initialized","level":"info","timestamp":"2020-11-18T17:38:31.713Z"}
+{"message":"Databse connected.","level":"info","timestamp":"2020-11-18T17:38:32.207Z"}
