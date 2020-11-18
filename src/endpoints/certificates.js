@@ -1,8 +1,8 @@
-import Transportation from '../models/Transportation';
-import logger from '../utils/Logger';
-import getAuthedUser from '../utils/getAuthedUser';
+const Transportation = require('../models/Transportation');
+const logger = require('../utils/Logger');
+const getAuthedUser = require('../utils/getAuthedUser');
 
-export default (app) => {
+module.exports = (app) => {
   app.get('/certificate/:transportationId', async (req, res) => {
     try {
       const user = await getAuthedUser(req.query.authToken);

@@ -1,10 +1,10 @@
-import Transportation from '../models/Transportation';
-import logger from '../utils/Logger';
-import getAuthedSmartDeviceOwner from '../utils/getAuthedSmartDeviceOwner';
-import { getQualityScore } from '../logic/analyseTemperatureMaps';
-import { generateCertificate } from '../logic/certificateGeneration';
+const Transportation = require('../models/Transportation');
+const logger = require('../utils/Logger');
+const getAuthedSmartDeviceOwner = require('../utils/getAuthedSmartDeviceOwner');
+const { getQualityScore } = require('../logic/analyseTemperatureMaps');
+const { generateCertificate } = require('../logic/certificateGeneration');
 
-export default (app) => {
+module.exports = (app) => {
   app.post('/temperatureMap/:transportationId', async (req, res) => {
     try {
       const user = await getAuthedSmartDeviceOwner(req.body.smartDeviceToken);

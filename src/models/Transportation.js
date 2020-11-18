@@ -1,5 +1,6 @@
-import mongoose, { Schema  } from 'mongoose';
-import TemperatureMapSchema from './TemperatureMapSchema';
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const TemperatureMapSchema = require('./TemperatureMapSchema');
 const ObjectIdSchema = Schema.Types.ObjectId;
 
 const TransportationSchema = new Schema(
@@ -25,4 +26,4 @@ TransportationSchema.index({ providerId: 1, transporterId: 1, clientId: 1 });
 
 const Transportation = mongoose.model('Transportation', TransportationSchema);
 
-export default Transportation;
+module.exports = Transportation;

@@ -1,3 +1,4 @@
 config/default.js
 package-lock.json
 node_modules
+logs

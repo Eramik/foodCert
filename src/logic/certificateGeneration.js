@@ -1,8 +1,8 @@
-import pdf from pdfjs;
-import fs from fs;
-import { v4 as generateToken } from 'uuid';
+const pdf = require('pdfjs');
+const fs = require('fs');
+const { v4: generateToken } = require('uuid');
 
-export const generateCertificate = async (transportation) => {
+module.exports.generateCertificate = async (transportation) => {
   await transportation.populate('clientId').populate('transporterId').populate('providerId').execPopulate();
   const transporter = transportation.transporterId;
   const provider = transportation.providerId;

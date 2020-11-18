@@ -1,4 +1,5 @@
-import { Schema  } from 'mongoose';
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const TemperatureMapPointSchema = new Schema(
   {
@@ -9,4 +10,4 @@ const TemperatureMapPointSchema = new Schema(
   }
 );
 
-export default TemperatureMapPointSchema;
+module.exports = TemperatureMapPointSchema;

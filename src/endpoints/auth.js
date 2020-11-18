@@ -1,8 +1,8 @@
-import User from '../models/User';
-import config from '../../config/default';
-import { v4 as generateToken } from 'uuid';
-import logger from '../utils/Logger';
-import EmailValidator from 'email-validator';
+const User = require('../models/User');
+const config = require('../../config/default');
+const { v4: generateToken } = require('uuid');
+const logger = require('../utils/Logger');
+const EmailValidator = require('email-validator');
 
 
 const anyRegisterDataErrors = async (body) => {
@@ -27,7 +27,7 @@ const anyRegisterDataErrors = async (body) => {
   }
 }
 
-export default (app) => {
+module.exports = (app) => {
   app.post('/register', async (req, res) => {
     try {
       // Data validation.

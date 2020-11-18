@@ -7,7 +7,7 @@ const getDistance = (x1, y1, z1, x2, y2, z2) => {
   return Math.sqrt(a * a + b * b + c * c);
 }
 
-export function getQualityScore(transportation) {
+module.exports.getQualityScore = function (transportation) {
   const INITIAL_SCORE = 1000 * 60 * 10;
   transportation = transportation.toObject();
   const maps = transportation.temperatureMaps;

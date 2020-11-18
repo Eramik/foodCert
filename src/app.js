@@ -12,16 +12,16 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-import AuthHandler from './endpoints/auth';
-import CertificatesHandler from './endpoints/certificates';
-import UserDataHandler from './endpoints/userData';
-import TemperatureMapReceiver from './endpoints/temperatureMapReceiver';
+const AuthHandler = require('./endpoints/auth');
+const CertificatesHandler = require('./endpoints/certificates');
+const UserDataHandler = require('./endpoints/userData');
+const TemperatureMapReceiver = require('./endpoints/temperatureMapReceiver');
 
 AuthHandler(app);
 CertificatesHandler(app);
 UserDataHandler(app);
 TemperatureMapReceiver(app);
 
-const port = 3000;
+const port = 3333;
 
 app.listen(port, () => console.log(`Аpp listening on port ${port}!`));

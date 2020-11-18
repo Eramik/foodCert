@@ -1,5 +1,5 @@
-import User from '../models/User';
+const User = require('../models/User');
 
-export default async (smartDviceToken) => {
+module.exports = async (smartDviceToken) => {
   return await User.findOne({ smartDviceTokens: smartDviceToken });
 }

@@ -1,5 +1,5 @@
-import User from '../models/User';
+const User = require('../models/User');
 
-export default async (authToken) => {
+module.export = async (authToken) => {
   return await User.findOne({ authTokens: authToken });
 }
