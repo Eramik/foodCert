@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 const config = require('../config/default');
 const mongoose = require('mongoose');
+const runScratchpad = require('./utils/scratchpad');
 
 // Init logger.
 const logger = require('./utils/Logger');
@@ -39,5 +40,7 @@ async function runServer() {
   const port = 3333;
 
   app.listen(port, () => console.log(`Аpp listening on port ${port}!`));
+  
+  //runScratchpad();
 };
 runServer();

@@ -8,9 +8,9 @@ const getDistance = (x1, y1, z1, x2, y2, z2) => {
 }
 
 module.exports.getQualityScore = function (transportation) {
-  const INITIAL_SCORE = 1000 * 60 * 10;
+  const INITIAL_SCORE = 1000 * 17;
   transportation = transportation.toObject();
-  const maps = transportation.temperatureMaps;
+  const maps = transportation.temperatureMaps.sort((m1, m2) => m1.creationTimestamp > m2.creationTimestamp ? 1 : -1);
   maps.forEach(temperatureMap => {
     temperatureMap.creationTimestamp = new Date(temperatureMap.creationTimestamp);
     temperatureMap.points.forEach(p1 => {
@@ -18,19 +18,19 @@ module.exports.getQualityScore = function (transportation) {
     });
     temperatureMap.points.forEach(p1 => {
       p1.closestPointDistance = Number.MAX_VALUE;
-      p2.closestPointSafe = false;
-      for (let i = 0; i < temperatureMap.points.length; i++); {
-        const p2 = temperatureMap.point[i];
+      p1.closestPointSafe = false;
+      for (let i = 0; i < temperatureMap.points.length - 1; i++) {
+        const p2 = temperatureMap.points[i];
         const distance = getDistance(p1.x, p1.y, p1.z, p2.x, p2.y, p2.z);
-        if (distance < closestPointDistance) {
+        if (distance < p1.closestPointDistance) {
           p1.closestPointDistance = distance;
           p1.closestPointSafe = p2.safe;
         }
       }
     });
-  }).sort((m1, m2) => m1.creationTimestamp > m2.creationTimestamp ? 1 : -1);
+  });
   var score = INITIAL_SCORE;
-  for (let i = 0; i < maps.length - 1; i++) {
+  for (var i = 0; i < maps.length - 1; i++) {
     const map1 = maps[i];
     const map2 = maps[i + 1]
     const stepValue = map2.creationTimestamp.getTime() - map1.creationTimestamp.getTime();
