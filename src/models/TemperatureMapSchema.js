@@ -6,7 +6,7 @@ const TemperatureMapSchema = new Schema(
   {
     isValid: Boolean,
     points: [TemperatureMapPointSchema],
-    creationTimestamp: String,
+    creationTimestamp: Date,
   },
 );
 
