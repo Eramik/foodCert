@@ -1,16 +1,7 @@
 const { getQualityScore } = require('../logic/analyseTemperatureMaps');
 const Transportation = require('../models/Transportation');
 const User = require('../models/User');
-
-const getRandomValue = (min, max) => {
-  if (min > max) {
-    let newMax = min;
-    min = max;
-    max = newMax;
-  }
-  var array = new Uint16Array(1);
-  return min + (window.crypto.getRandomValues(array)[0] % (max + 1 - min));
-}
+const random = require('random');
 
 const generatePoints = (min, max) => {
   const points = [];
@@ -19,7 +10,7 @@ const generatePoints = (min, max) => {
       x: i,
       y: 1,
       z: 1,
-      temperatureValue: getRandomValue(min, max)
+      temperatureValue: random.float(min, max)
     });
   }
   return points;
