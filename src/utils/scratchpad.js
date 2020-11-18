@@ -4,9 +4,12 @@ const User = require('../models/User');
 
 const getRandomValue = (min, max) => {
   if (min > max) {
-    max = min;
+    let newMax = min;
+    min = max;
+    max = newMax;
   }
-  return min + (Math.random() * 100 % (max - min));
+  var array = new Uint16Array(1);
+  return min + (window.crypto.getRandomValues(array)[0] % (max + 1 - min));
 }
 
 const generatePoints = (min, max) => {
