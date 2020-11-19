@@ -42,7 +42,6 @@ module.exports.getQualityScore = function (transportation, IS_DB_DOCUMENT = true
   });
   var score = INITIAL_SCORE;
   for (let i = 0; i < maps.length - 1; i++) {
-    //console.log('i: ', i);
     const map1 = maps[i];
     const map2 = maps[i + 1]
     const stepValue = map2.creationTimestamp.getTime() - map1.creationTimestamp.getTime();
@@ -50,19 +49,12 @@ module.exports.getQualityScore = function (transportation, IS_DB_DOCUMENT = true
     if (dangerPoints1.length === 0) {
       continue;
     }
-    //console.log('Danger points: ', dangerPoints1.length);
     const dangerPoints2 = map2.points.filter(point => !point.safe);
     dangerPoints1.forEach(p1 => {
-      //console.log('p1');
       const dangerRetainedCoefficient = dangerPoints2.some(p2 => p2.x === p1.x && p2.y === p1.y && p2.z === p1.z) ? 2 : 1;
       const approximateDangerAreaCoefficient = p1.closestPointSafe ? 0.25 : 0.5;
-      //console.log('Closest point distance: ', p1.closestPointDistance);
       const approximateDangerArea = approximateDangerAreaCoefficient * (Math.PI * p1.closestPointDistance * p1.closestPointDistance);
       const scoreLoss = stepValue * dangerRetainedCoefficient * approximateDangerArea;
-      //console.log('Step value: ', stepValue);
-      //console.log('dangerRetainedCoefficient: ', dangerRetainedCoefficient);
-      //console.log('approximateDangerArea: ', approximateDangerArea);
-      //scoreLoss !== 0 && console.log('Score loss: ', scoreLoss);
       score -= scoreLoss;
     });
   }
