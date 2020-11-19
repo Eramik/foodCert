@@ -8,7 +8,7 @@ const getDistance = (x1, y1, z1, x2, y2, z2) => {
 }
 
 module.exports.getQualityScore = function (transportation, IS_DB_DOCUMENT = true) {
-  const INITIAL_SCORE = 1000 * 17;
+  const INITIAL_SCORE = 1000 * 20;
   if (IS_DB_DOCUMENT) {
     transportation = transportation.toObject()
   } else {

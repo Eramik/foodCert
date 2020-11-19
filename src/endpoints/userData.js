@@ -73,6 +73,45 @@ module.exports = (app) => {
       return res.status(500).json({ error: e });
     }
   });
+  app.get('/deleteUser/:userId', async (req, res) => {
+    try {
+      const user = await getAuthedUser(req.query.authToken);
+      if (!user) {
+        return res.status(403).json({ error: 'Need to be logged in.' });
+      }
+      if (!user.isAdmin) {
+        return res.status(403).json({ error: 'Need to be admin.' });
+      }
+      
+      await Transportation.deleteMany({ transporterId: req.params.userId });
+      await User.deleteOne({ _id: req.params.userId });
+
+      const allUsers = await User.find().lean();
+      return res.json({ users: allUsers });
+    } catch (e) {
+      logger.error(e);
+      return res.status(500).json({ error: e });
+    }
+  });
+  app.get('/deleteTransport/:transportId', async (req, res) => {
+    try {
+      const user = await getAuthedUser(req.query.authToken);
+      if (!user) {
+        return res.status(403).json({ error: 'Need to be logged in.' });
+      }
+      if (!user.isAdmin) {
+        return res.status(403).json({ error: 'Need to be admin.' });
+      }
+      
+      await Transportation.deleteOne({ _id: req.params.transportId });
+
+      const allTrasportations = await Transportation.find().populate('transporterId').lean();
+      return res.json({ transportations: allTrasportations });
+    } catch (e) {
+      logger.error(e);
+      return res.status(500).json({ error: e });
+    }
+  });
   app.get('/getlocales', async (req, res) => {
     try {
       return res.json({ locales });
