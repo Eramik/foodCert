@@ -2,6 +2,7 @@ const { getQualityScore } = require('../logic/analyseTemperatureMaps');
 const Transportation = require('../models/Transportation');
 const User = require('../models/User');
 const random = require('random');
+const { generateCertificate } = require('../logic/certificateGeneration');
 
 const generatePoints = (min, max) => {
   const points = [];
@@ -47,12 +48,15 @@ module.exports = async () => {
       };
       t.transportationStartTime = t.temperatureMaps[0].creationTimestamp;
       t.transportationEndTime = t.temperatureMaps[t.temperatureMaps.length - 1].creationTimestamp;
-      transportation = await Transportation.create();
+      transportation = await Transportation.create(t);
     }
     
     console.log('For transportation ' + transportation._id.toString());
     const score = getQualityScore(transportation);
     console.log('Score: ', score);
+    const certPath = await generateCertificate(transportation);
+    transportation.certificatePath = certPath;
+    console.log('Certificate: ', certPath);
     transportation.score = score;
     await transportation.save();
   } catch (e) {
