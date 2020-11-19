@@ -1,6 +1,7 @@
 const Transportation = require('../models/Transportation');
 const logger = require('../utils/Logger');
 const getAuthedUser = require('../utils/getAuthedUser');
+const path = require('path');
 
 module.exports = (app) => {
   app.get('/certificate/:transportationId', async (req, res) => {
@@ -10,7 +11,7 @@ module.exports = (app) => {
         return res.status(403).json({ error: 'Need to be logged in.' });
       }
       
-      const transportation = await Transportation.findOneById(req.params.transportationId);
+      const transportation = await Transportation.findById(req.params.transportationId);
       if (!transportation) {
         return res.status(404).json({ error: 'Not found.' });
       }
@@ -26,9 +27,9 @@ module.exports = (app) => {
         return res.status(400).json({ error: 'Certificate is not issued.' });
       }
 
-      return res.setHeader('Content-Type', 'application/pdf').sendFile('../../certificates/' + transportation.certificatePath);
+      return res.sendFile(path.join(__dirname, '../../certificates/' + transportation.certificatePath));
     } catch (e) {
-      logger.error(e);
+      console.log(e);
       return res.status(500).json({ error: e });
     }
   });

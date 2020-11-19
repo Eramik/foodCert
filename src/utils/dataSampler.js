@@ -31,12 +31,13 @@ const generateTemperatureMaps = (min, max) => {
   return maps.sort((m1, m2) => new Date(m1.creationTimestamp) > new Date(m2.creationTimestamp) ? 1 : -1);;
 }
 
-module.exports = async (save = false) => {
+module.exports = async (save = false, user) => {
   try {
     const LOAD_EXISTING_TRANSPORTATION = false;
     const SAVE_TO_DATABASE = save;
-
-    const admin = await User.findOne({ email: 'admin@test.com' });
+    if (!user) {
+      user = await User.findOne({ email: 'admin@test.com' }).lean();
+    }
 
     let transportation;
 
@@ -44,7 +45,7 @@ module.exports = async (save = false) => {
       transportation = await Transportation.findOne();
     } else {
       const t = {
-        transporterId: admin._id,
+        transporterId: user._id,
         minimalAllowedTemperature: 2,
         maximalAllowedTemperature: 6,
         temperatureMaps: generateTemperatureMaps(1, 7)
@@ -58,16 +59,13 @@ module.exports = async (save = false) => {
       }
     }
     
-    SAVE_TO_DATABASE && console.log('For transportation ' + transportation._id.toString());
     const score = getQualityScore(transportation, SAVE_TO_DATABASE);
-    console.log('Score: ', score);
     if (SAVE_TO_DATABASE) {
       const certPath = await generateCertificate(transportation);
       transportation.certificatePath = certPath;
-      console.log('Certificate: ', certPath);
     } 
     transportation.score = score;
-    
+
     if (SAVE_TO_DATABASE) {
       await transportation.save();
     }
