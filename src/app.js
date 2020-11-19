@@ -5,6 +5,9 @@ const cors = require('cors')
 const config = require('../config/default');
 const mongoose = require('mongoose');
 const runScratchpad = require('./utils/dataSampler');
+const path = require('path');
+const fs = require('fs');
+const https = require('https');
 
 // Init logger.
 const logger = require('./utils/Logger');
@@ -39,7 +42,13 @@ async function runServer() {
 
   const port = 3333;
 
+  const key = fs.readFileSync(path.join(__dirname,'../key.pem'));
+  const cert = fs.readFileSync(path.join(__dirname,'../cert.pem'));
+  
+  const server = https.createServer({key: key, cert: cert }, app);
+
   app.listen(port, () => console.log(`Аpp listening on port ${port}!`));
+  //server.listen(port, () => console.log(`HTTPS Аpp listening on port ${port}!`));
   
   //runScratchpad(false);
 };
