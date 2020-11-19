@@ -21,11 +21,11 @@ const generateTemperatureMaps = (min, max) => {
   const maps = [];
   for (let i = 0; i < 5; i++) {
     maps.push({
-      creationTimestamp: new Date(creationStart - 1000 * i),
+      creationTimestamp: new Date(creationStart - 1000 * i).toUTCString(),
       points: generatePoints(min, max)
     });
   }
-  return maps;
+  return maps.sort((m1, m2) => new Date(m1.creationTimestamp) > new Date(m2.creationTimestamp) ? 1 : -1);;
 }
 
 module.exports = async () => {
@@ -39,12 +39,15 @@ module.exports = async () => {
     if (LOAD_EXISTING_TRANSPORTATION) {
       transportation = await Transportation.findOne();
     } else {
-      transportation = await Transportation.create({
+      const t = {
         transporterId: admin._id,
         minimalAllowedTemperature: 2,
         maximalAllowedTemperature: 6,
         temperatureMaps: generateTemperatureMaps(1, 7)
-      });
+      };
+      t.transportationStartTime = t.temperatureMaps[0].creationTimestamp;
+      t.transportationEndTime = t.temperatureMaps[t.temperatureMaps.length - 1].creationTimestamp;
+      transportation = await Transportation.create();
     }
     
     console.log('For transportation ' + transportation._id.toString());

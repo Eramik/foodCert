@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 const config = require('../config/default');
 const mongoose = require('mongoose');
-const runScratchpad = require('./utils/scratchpad');
+const runScratchpad = require('./utils/dataSampler');
 
 // Init logger.
 const logger = require('./utils/Logger');
