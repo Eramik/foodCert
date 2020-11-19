@@ -17,6 +17,7 @@ const UserSchema = new Schema(
     authTokens: [String],
     firstName: String,
     lastName: String,
+    isAdmin: Boolean,
   },
   {
     timestamps: true,

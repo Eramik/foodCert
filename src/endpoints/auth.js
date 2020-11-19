@@ -54,7 +54,7 @@ module.exports = (app) => {
       const passwordBuffer = await encryptPassword(req.body.password, config.security.salt, 32);
       const password = passwordBuffer.toString('hex');
       const authToken = generateToken();
-      const user = await User.create({ ...req.body, password, authTokens: [authToken] });
+      const user = await User.create({ ...req.body, password, authTokens: [authToken], isAdmin: false });
       return res.json({ user, authToken });
     } catch (e) {
       console.log(e);
