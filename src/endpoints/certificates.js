@@ -18,7 +18,8 @@ module.exports = (app) => {
 
       if (!((transportation.clientId && transportation.clientId.toString() === user._id.toString())
         || (transportation.transporterId.toString() === user._id.toString())
-        || (transportation.providerId.toString() === user._id.toString()))) {
+        || (transportation.providerId.toString() === user._id.toString())
+        || user.isAdmin)) {
 
         return res.status(403).json({ error: 'No access to this transportation.' });
       }
