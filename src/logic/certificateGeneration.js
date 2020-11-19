@@ -20,6 +20,6 @@ module.exports.generateCertificate = async (transportation) => {
   doc.text('CERTIFICATE\n\n', { fontSize: 16, textAlign: 'center' });
   doc.text(`Certificate id ${transportation._id} at ${transportation.transportationEndTime} proving that goods were transported by ${transporter.firstName} ${transporter.lastName} in a temperature that meets official quality requirements.`);
 
-  await doc.end()
+  await doc.end();
   return certName;
 }

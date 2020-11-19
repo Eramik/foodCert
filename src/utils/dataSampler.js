@@ -3,6 +3,8 @@ const Transportation = require('../models/Transportation');
 const User = require('../models/User');
 const random = require('random');
 const { generateCertificate } = require('../logic/certificateGeneration');
+const seedrandom = require('seedrandom');
+random.use(new Date().toString() + '123');
 
 const generatePoints = (min, max) => {
   const points = [];
@@ -29,9 +31,10 @@ const generateTemperatureMaps = (min, max) => {
   return maps.sort((m1, m2) => new Date(m1.creationTimestamp) > new Date(m2.creationTimestamp) ? 1 : -1);;
 }
 
-module.exports = async () => {
+module.exports = async (save = false) => {
   try {
     const LOAD_EXISTING_TRANSPORTATION = false;
+    const SAVE_TO_DATABASE = save;
 
     const admin = await User.findOne({ email: 'admin@test.com' });
 
@@ -48,17 +51,26 @@ module.exports = async () => {
       };
       t.transportationStartTime = t.temperatureMaps[0].creationTimestamp;
       t.transportationEndTime = t.temperatureMaps[t.temperatureMaps.length - 1].creationTimestamp;
-      transportation = await Transportation.create(t);
+      if (SAVE_TO_DATABASE) {
+        transportation = await Transportation.create(t);
+      } else {
+        transportation = t;
+      }
     }
     
-    console.log('For transportation ' + transportation._id.toString());
-    const score = getQualityScore(transportation);
+    SAVE_TO_DATABASE && console.log('For transportation ' + transportation._id.toString());
+    const score = getQualityScore(transportation, SAVE_TO_DATABASE);
     console.log('Score: ', score);
-    const certPath = await generateCertificate(transportation);
-    transportation.certificatePath = certPath;
-    console.log('Certificate: ', certPath);
+    if (SAVE_TO_DATABASE) {
+      const certPath = await generateCertificate(transportation);
+      transportation.certificatePath = certPath;
+      console.log('Certificate: ', certPath);
+    } 
     transportation.score = score;
-    await transportation.save();
+    
+    if (SAVE_TO_DATABASE) {
+      await transportation.save();
+    }
   } catch (e) {
     console.log(e);
   }

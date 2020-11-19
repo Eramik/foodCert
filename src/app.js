@@ -41,6 +41,6 @@ async function runServer() {
 
   app.listen(port, () => console.log(`Аpp listening on port ${port}!`));
   
-  runScratchpad();
+  runScratchpad(false);
 };
 runServer();
