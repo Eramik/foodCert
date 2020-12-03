@@ -13,7 +13,7 @@ module.exports = (app) => {
         return res.status(403).json({ error: 'Need to be logged in.' });
       }
       
-      const myTrasportations = await Transportation.find({ $or: [{ providerId: user._id }, { clientId: user._id }, { transporterId: user._id }] }).lean();
+      const myTrasportations = await Transportation.find({ $or: [{ providerId: user._id }, { clientId: user._id }, { transporterId: user._id }] }).sort({ updatedAt: -1 }).lean();
       return res.json({ transportations: myTrasportations });
     } catch (e) {
       logger.error(e);
@@ -129,7 +129,7 @@ module.exports = (app) => {
 
       await dataSampler(true, user);
 
-      const myTrasportations = await Transportation.find({ $or: [{ providerId: user._id }, { clientId: user._id }, { transporterId: user._id }] }).lean();
+      const myTrasportations = await Transportation.find({ $or: [{ providerId: user._id }, { clientId: user._id }, { transporterId: user._id }] }).sort({ updatedAt: -1 }).lean();
       return res.json({ transportations: myTrasportations });
     } catch (e) {
       console.log(e);
