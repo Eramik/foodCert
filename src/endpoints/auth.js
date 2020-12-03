@@ -69,6 +69,9 @@ module.exports = (app) => {
       const passwordBuffer = await encryptPassword(req.body.password.toString(), config.security.salt, 32);
       const password = passwordBuffer.toString('hex');
       const user = await User.findOne({ email: req.body.email.toString(), password });
+      if (!user) {
+        return res.status(400).json({ error: 'Invalid email or password.' });
+      }
       const authToken = generateToken();
       user.authTokens.push(authToken);
       await user.save();
